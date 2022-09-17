@@ -7,6 +7,8 @@
 
 const puppeteer = require("puppeteer");
 
+const LUCKY_GUESS = "crate".split("");
+
 function sleep(ms: number) {
   return new Promise<void>((res, rej) => {
     setTimeout(() => {
@@ -27,16 +29,10 @@ export async function fetchWordleOfTheDay(): Promise<string> {
   await page.$eval('[data-testid="modal-overlay"]', (elem) => elem.click());
 
   for (let i = 0; i < 6; i++) {
-    page.keyboard.press("c");
-    await sleep(10);
-    page.keyboard.press("r");
-    await sleep(10);
-    page.keyboard.press("a");
-    await sleep(10);
-    page.keyboard.press("t");
-    await sleep(10);
-    page.keyboard.press("e");
-    await sleep(10);
+    for (const letter of LUCKY_GUESS) {
+      page.keyboard.press(letter);
+      await sleep(5);
+    }
     page.keyboard.press("Enter");
     await sleep(2000);
   }
