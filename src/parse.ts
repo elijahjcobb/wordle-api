@@ -20,6 +20,7 @@ function sleep(ms: number) {
 export async function fetchWordleOfTheDay(): Promise<string> {
   const browser = await puppeteer.launch({
     headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
   await page.goto("https://www.nytimes.com/games/wordle/index.html");
