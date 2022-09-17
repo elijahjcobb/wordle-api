@@ -10,4 +10,4 @@ app.get("/", async (req, res) => {
   res.json({ solution: await cache.read() });
 });
 
-app.listen(9061);
+app.listen(9483);
