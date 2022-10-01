@@ -32,10 +32,10 @@ export async function fetchWordleOfTheDay(): Promise<string> {
   for (let i = 0; i < 6; i++) {
     for (const letter of LUCKY_GUESS) {
       page.keyboard.press(letter);
-      await sleep(100);
+      await sleep(500);
     }
     page.keyboard.press("Enter");
-    await sleep(2000);
+    await sleep(4000);
   }
 
   // @ts-ignore
