@@ -26,9 +26,11 @@ export async function fetchWordleOfTheDay(): Promise<string> {
     const page = await browser.newPage();
     await page.goto("https://www.nytimes.com/games/wordle/index.html");
 
-    await sleep(500);
+    await sleep(2000);
     // @ts-ignore
     await page.$eval('[data-testid="modal-overlay"]', (elem) => elem.click());
+
+    await sleep(2000);
 
     for (let i = 0; i < 6; i++) {
       for (const letter of LUCKY_GUESS) {
